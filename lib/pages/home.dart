@@ -1,0 +1,90 @@
+import 'package:farm_land/pages/setting.dart';
+import 'package:flutter/material.dart';
+
+import 'notification.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green.shade300,
+      appBar: AppBar(
+        backgroundColor: Colors.green.shade900,
+        title: const Text(
+          "My Farm",
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
+      ),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/img/img home.png",
+              alignment: Alignment.center,
+              width: 200,
+              height: 200,
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {}),
+                FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.notifications,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                          return const NotificationScreen();
+                        }),
+                      );
+                    }),
+                FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.settings,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                          return const setting();
+                        }),
+                      );
+                    }),
+                FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.refresh,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {}),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
