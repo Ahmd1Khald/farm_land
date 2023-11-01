@@ -1,6 +1,8 @@
 import 'package:farm_land/pages/setting.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'login.dart';
 import 'notification.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +23,16 @@ class _HomeState extends State<Home> {
           "My Farm",
           style: TextStyle(color: Colors.white, fontSize: 30),
         ),
+        leading: IconButton(
+            onPressed: () async {
+              auth.signOut();
+              await Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const MyFirsApp()),
+                (route) => false,
+              );
+            },
+            icon: const Icon(Icons.keyboard_arrow_left_sharp)),
       ),
       body: SizedBox(
         width: double.infinity,
